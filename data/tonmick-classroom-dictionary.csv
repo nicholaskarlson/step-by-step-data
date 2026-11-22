@@ -1,0 +1,26 @@
+file,column,meaning
+tonmick-classroom.csv,student_id,Fictional student ID
+tonmick-classroom.csv,college,College ID (16 colleges); the offer was randomized within each college
+tonmick-classroom.csv,offer,1 = randomly offered peer mentoring; 0 = not offered
+tonmick-classroom.csv,part_time,1 = enrolled part-time at entry; 0 = full-time
+tonmick-classroom.csv,entry_grade,"Grade average from school records at entry, 1.5 to 4.0"
+tonmick-classroom.csv,visits,"Visits to student support services in the first year, while enrolled"
+tonmick-classroom.csv,withdrew,1 = withdrew within the first year; 0 = did not (a transfer out counts as 0); blank = not known (consent withdrawn)
+tonmick-classroom.csv,grade_12,"College grade average after 12 months (or at exit, for a student who left after month 4); blank = none recorded"
+tonmick-classroom.csv,exit,"How the first year ended: stayed, withdrew, transferred, or consent withdrawn"
+tonmick-offered.csv,entry_grade,"As above, for the 609 students offered mentoring (calculator lists)"
+tonmick-offered.csv,visits,"As above, for the 609 students offered mentoring (calculator lists)"
+tonmick-not-offered.csv,entry_grade,"As above, for the 610 students not offered mentoring (calculator lists)"
+tonmick-not-offered.csv,visits,"As above, for the 610 students not offered mentoring (calculator lists)"
+tonmick-grades-not-offered.csv,entry_grade,Students not offered mentoring who have a 12-month grade (calculator lists)
+tonmick-grades-not-offered.csv,grade_12,Their college grade average after 12 months
+tonmick-invited.csv,student_id,"Fictional student ID, for all 1,600 students invited to the study"
+tonmick-invited.csv,college,College ID
+tonmick-invited.csv,part_time,1 = enrolled part-time at entry; 0 = full-time
+tonmick-invited.csv,joined,1 = answered the baseline survey and joined the study; 0 = did not
+tonmick-lists.csv,A (L1),"School grade at entry, students offered mentoring (609 rows); no header row, for TI Connect CE's Data Import"
+tonmick-lists.csv,B (L2),"Support visits in the first year, students offered mentoring (609 rows)"
+tonmick-lists.csv,C (L3),"School grade at entry, students not offered (610 rows)"
+tonmick-lists.csv,D (L4),"Support visits in the first year, students not offered (610 rows)"
+tonmick-lists.csv,E (L5),"School grade at entry, students not offered who have a 12-month grade (555 rows)"
+tonmick-lists.csv,F (L6),"College grade after 12 months, the same 555 students"
