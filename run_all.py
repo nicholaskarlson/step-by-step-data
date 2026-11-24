@@ -7,11 +7,14 @@
 1. SHA256SUMS: every file in data/, samples/, and calculator/ is listed, and each matches.
 2. The three fixed samples in samples/ must equal the draw from seed 2027
    (python/make_samples.py --check).
-3. For each set of values (the data summary, and Chapters 1 to 4), route 1, standard-library
+3. For each set of values (the data summary, Chapters 1 to 4, and Chapters 5 to 8), route 1, standard-library
    Python (python/<set>.py), and route 2, base R (r/<set>.R), each write
    build/<route>/<set>.csv.
 4. Each route's values must equal expected/<set>.csv, name for name, character for
-   character.
+   character. No name may appear in two sets, since the book reads them all together.
+   Chapters 5 to 8 also check three simulations against their exact values, each route with
+   its own random numbers, within a stated tolerance; those print a line each and are not
+   compared between the routes.
 
 The last line is STEP_BY_STEP_DATA_OK when everything matches. Standard library only;
 Python 3.10 or later. R needs no add-on packages.
@@ -66,6 +69,17 @@ def read(path):
     return {r[0]: r[1] for r in rows[1:] if r}
 
 
+def run_route(cmd, label, out, env):
+    """Run one route; if it stops with an error, record it (its own message is printed above)."""
+    if out.exists():
+        out.unlink()
+    done = subprocess.run(cmd, env=env)
+    if done.returncode != 0:
+        problems.append(f"{label}: the route stopped with exit status {done.returncode} (its message is above)")
+        return False
+    return True
+
+
 def compare(route, got, want):
     for name in sorted(set(want) | set(got)):
         if got.get(name) != want.get(name):
@@ -85,21 +99,27 @@ def main():
     print((check.stdout or "").strip().splitlines()[-1] if check.stdout else "make_samples.py printed nothing")
     if check.returncode != 0:
         problems.append("samples/: the files do not equal the draw from seed 2027 (python/make_samples.py --check)")
-    sets = ["data_summary", "chapters_1_4"]
+    sets = ["data_summary", "chapters_1_4", "chapters_5_8"]
     want = {name: read(ROOT / "expected" / f"{name}.csv") for name in sets}
+    seen = {}
+    for name in sets:
+        for key in want[name]:
+            if key in seen:
+                problems.append(f"{key} is in expected/{seen[key]}.csv and expected/{name}.csv")
+            seen[key] = name
     routes = ["python"]
     for name in sets:
         out = ROOT / "build" / "python" / f"{name}.csv"
-        subprocess.run([sys.executable, "-I", str(ROOT / "python" / f"{name}.py"), str(ROOT), str(out)], check=True, env=env)
-        compare(f"python {name}", read(out), want[name])
+        if run_route([sys.executable, "-I", str(ROOT / "python" / f"{name}.py"), str(ROOT), str(out)], f"python {name}", out, env):
+            compare(f"python {name}", read(out), want[name])
     r = rscript()
     if r:
         ver = subprocess.run([r, "--version"], capture_output=True, text=True)
         print(((ver.stdout or "") + (ver.stderr or "")).strip().splitlines()[0])
         for name in sets:
             out = ROOT / "build" / "r" / f"{name}.csv"
-            subprocess.run([r, "--vanilla", str(ROOT / "r" / f"{name}.R"), str(ROOT), str(out)], check=True, env=env)
-            compare(f"r {name}", read(out), want[name])
+            if run_route([r, "--vanilla", str(ROOT / "r" / f"{name}.R"), str(ROOT), str(out)], f"r {name}", out, env):
+                compare(f"r {name}", read(out), want[name])
         routes.append("r")
     elif a.require_r:
         problems.append("base R was not found (Rscript), and --require-r was given")
