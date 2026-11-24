@@ -6,8 +6,10 @@ Copyright © 2026 Nicholas Elliott Karlson.
   Commons Attribution 4.0 International (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/.
   They are selections from the fictional Tonmick files in github.com/nicholaskarlson/predict, which
   are CC BY 4.0 too.
+- **The three fixed samples** (`samples/`, from overlay D1): CC BY 4.0. They are row selections
+  from `data/tonmick-classroom.csv`.
 - **The outline** (`outline/`, from overlay D1): CC BY 4.0.
-- **Code** (`run_all.py`, `python/`, `r/`, `.github/`): MIT License (`LICENSE`).
+- **Code** (`run_all.py`, `python/`, `r/`, `scripts/`, `.github/`): MIT License (`LICENSE`).
 - **Trademarks.** Neither license covers the NEKpress name, the series branding, or anyone else's
   trademark. TI-84 Plus CE and TI Connect CE are trademarks of Texas Instruments, which is not
   affiliated with, and does not endorse, this repository.

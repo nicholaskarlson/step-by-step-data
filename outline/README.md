@@ -9,6 +9,7 @@ Each chapter's numbers come from two routes, standard-library Python and base R,
 code, and `run_all.py` requires them to agree with the values in `expected/`. The book's own
 checks then require every printed number to match.
 
-- D1: Chapters 1 to 4 (the calculator; data and variables; one quantitative variable; collecting data).
+- D1: Chapters 1 to 4 (the calculator; data and variables; one quantitative variable; collecting data),
+  with the chapter reviews and the three fixed samples: `chapters-1-4.md` (231 values).
 - D2: Chapters 5 to 8 (probability; random variables; sampling distributions; inference for proportions).
 - D3: Chapters 9 to 12 (chi-square tests; inference for means; regression; the eight investigations).

@@ -4,11 +4,14 @@
     python run_all.py                 Python route, and base R if Rscript is found
     python run_all.py --require-r     fail if base R is not found (what CI runs)
 
-1. SHA256SUMS: every file in data/ and calculator/ is listed, and each matches.
-2. Route 1, standard-library Python (python/data_summary.py), and route 2, base R
-   (r/data_summary.R), each write build/<route>/data_summary.csv.
-3. Each route's values must equal expected/data_summary.csv, name for name, character
-   for character.
+1. SHA256SUMS: every file in data/, samples/, and calculator/ is listed, and each matches.
+2. The three fixed samples in samples/ must equal the draw from seed 2027
+   (python/make_samples.py --check).
+3. For each set of values (the data summary, and Chapters 1 to 4), route 1, standard-library
+   Python (python/<set>.py), and route 2, base R (r/<set>.R), each write
+   build/<route>/<set>.csv.
+4. Each route's values must equal expected/<set>.csv, name for name, character for
+   character.
 
 The last line is STEP_BY_STEP_DATA_OK when everything matches. Standard library only;
 Python 3.10 or later. R needs no add-on packages.
@@ -32,10 +35,10 @@ def sums():
         if line.strip():
             digest, name = line.split(maxsplit=1)
             listed[name.lstrip("*")] = digest
-    found = sorted(p.relative_to(ROOT).as_posix() for d in ("data", "calculator") for p in (ROOT / d).iterdir()
+    found = sorted(p.relative_to(ROOT).as_posix() for d in ("data", "samples", "calculator") for p in (ROOT / d).iterdir()
                    if p.is_file() and p.name != "SOURCE.md")
     if sorted(listed) != found:
-        problems.append(f"SHA256SUMS lists {sorted(listed)}, but data/ and calculator/ hold {found}")
+        problems.append(f"SHA256SUMS lists {sorted(listed)}, but data/, samples/, and calculator/ hold {found}")
     for name, digest in listed.items():
         p = ROOT / name
         if not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
@@ -77,19 +80,26 @@ def main():
     a = ap.parse_args()
     files = sums()
     env = dict(os.environ, PYTHONUTF8="1")
-    want = read(ROOT / "expected" / "data_summary.csv")
-    routes = []
-    out = ROOT / "build" / "python" / "data_summary.csv"
-    subprocess.run([sys.executable, "-I", str(ROOT / "python" / "data_summary.py"), str(ROOT), str(out)], check=True, env=env)
-    compare("python", read(out), want)
-    routes.append("python")
+    check = subprocess.run([sys.executable, "-I", str(ROOT / "python" / "make_samples.py"), "--check"],
+                           capture_output=True, text=True, env=env)
+    print((check.stdout or "").strip().splitlines()[-1] if check.stdout else "make_samples.py printed nothing")
+    if check.returncode != 0:
+        problems.append("samples/: the files do not equal the draw from seed 2027 (python/make_samples.py --check)")
+    sets = ["data_summary", "chapters_1_4"]
+    want = {name: read(ROOT / "expected" / f"{name}.csv") for name in sets}
+    routes = ["python"]
+    for name in sets:
+        out = ROOT / "build" / "python" / f"{name}.csv"
+        subprocess.run([sys.executable, "-I", str(ROOT / "python" / f"{name}.py"), str(ROOT), str(out)], check=True, env=env)
+        compare(f"python {name}", read(out), want[name])
     r = rscript()
     if r:
         ver = subprocess.run([r, "--version"], capture_output=True, text=True)
         print(((ver.stdout or "") + (ver.stderr or "")).strip().splitlines()[0])
-        out = ROOT / "build" / "r" / "data_summary.csv"
-        subprocess.run([r, "--vanilla", str(ROOT / "r" / "data_summary.R"), str(ROOT), str(out)], check=True, env=env)
-        compare("r", read(out), want)
+        for name in sets:
+            out = ROOT / "build" / "r" / f"{name}.csv"
+            subprocess.run([r, "--vanilla", str(ROOT / "r" / f"{name}.R"), str(ROOT), str(out)], check=True, env=env)
+            compare(f"r {name}", read(out), want[name])
         routes.append("r")
     elif a.require_r:
         problems.append("base R was not found (Rscript), and --require-r was given")
@@ -100,7 +110,9 @@ def main():
             print("MISMATCH", p)
         print(f"STEP_BY_STEP_DATA_FAILED mismatches={len(problems)}")
         sys.exit(1)
-    print(f"STEP_BY_STEP_DATA_OK files={files} values={len(want)} routes={','.join(routes)}")
+    counts = " ".join(f"{name}={len(want[name])}" for name in sets)
+    print(f"STEP_BY_STEP_DATA_OK files={files} values={sum(len(v) for v in want.values())} ({counts}) "
+          f"samples=3 routes={','.join(routes)}")
 
 
 if __name__ == "__main__":

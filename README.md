@@ -16,17 +16,22 @@ often students visited support services, and their grades. All of it is invented
 | --- | --- |
 | `data/` | Seven CSV files: every student who joined, the 1,600 invited, smaller files for calculator lists, one file that loads six lists at once through TI Connect™ CE, and a dictionary of every column. `data/SOURCE.md` says where they come from |
 | `calculator/SHUFFLE.8xp` | SHUFFLE, a short program for a TI-84 Plus CE™ graphing calculator that simulates the chance assignment |
-| `SHA256SUMS` | The SHA-256 of every file in `data/` and `calculator/` |
+| `samples/` | Three simple random samples of the joiners (100, 120, and 20), drawn once with seed 2027 for the book's one-sample examples; `data/SOURCE.md` says how |
+| `SHA256SUMS` | The SHA-256 of every file in `data/`, `samples/`, and `calculator/` |
 | `python/make_data.py` | Rebuilds the data files from the public Tonmick files in [predict](https://github.com/nicholaskarlson/predict) v1.0.1 |
+| `python/make_samples.py` | Draws the samples, or with `--check` redraws them in memory and compares |
 | `python/data_summary.py`, `r/data_summary.R` | Two independent routes, standard-library Python and base R, that summarize every file |
+| `python/chapters_1_4.py`, `r/chapters_1_4.R` | The same two routes for every number in Chapters 1 to 4, their Try It answers, and their reviews |
 | `expected/` | The values both routes must give, character for character |
-| `outline/` | The book's outline, with every number computed (from D1) |
+| `outline/` | The book's outline, chapter by chapter, with every number named and computed (`chapters-1-4.md` from D1) |
 | `run_all.py` | Runs the checks and compares the routes |
+| `scripts/` | `check.sh` runs `run_all.py`; `apply-overlay.sh` and `pr.sh` apply the project's overlays as pull requests |
 
 ## Run the checks
 
 Python 3.10 or later, standard library only. If R is installed (no add-on packages), the base R
-route runs too; `--require-r` makes it required. The last line is `STEP_BY_STEP_DATA_OK`.
+route runs too; `--require-r` makes it required. The last line is `STEP_BY_STEP_DATA_OK`, with
+the number of files and values checked, the samples, and the routes that ran.
 
 Ubuntu or macOS:
 
@@ -56,7 +61,7 @@ GitHub Actions runs both routes on Ubuntu, Windows, and macOS, and the rebuild, 
 
 ## Rights
 
-The data files, SHUFFLE, and the outline are CC BY 4.0; the code is MIT (`LICENSE`). See
+The data files, the samples, SHUFFLE, and the outline are CC BY 4.0; the code is MIT (`LICENSE`). See
 `LICENSES.md`. TI-84 Plus CE and TI Connect CE are trademarks of Texas Instruments, which is not
 affiliated with, and does not endorse, this repository.
 
