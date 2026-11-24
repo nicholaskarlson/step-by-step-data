@@ -1,0 +1,232 @@
+name,value
+ch1.ex1.data,"9, 3, 2, 2, 2, 0, 7, 9, 9, 7"
+ch1.ex1.five,"0, 2, 5, 9, 9"
+ch1.ex1.mean,5
+ch1.ex1.n,10
+ch1.ex1.sigma,3.347
+ch1.ex1.sum,50
+ch1.ex1.sx,3.528
+ch1.ex10.a,-0.643
+ch1.ex10.b,1.198
+ch1.ex10.pairs,"(3.54, 3.67); (3.04, 2.75); (3.02, 3.29); (2.51, 2.53); (2.91, 2.68); (2.79, 2.55)"
+ch1.ex10.r,0.880
+ch1.ex10.r2,0.774
+ch1.ex2.fence_high,19.5
+ch1.ex2.fence_low,-8.5
+ch1.ex2.iqr,7
+ch1.ex2.outliers,0
+ch1.ex3.bars,"1, 4, 0, 2, 3"
+ch1.ex4.above_3_5,0.1481
+ch1.ex4.p90,3.611
+ch1.ex5.cdf2,0.8692
+ch1.ex5.pdf2,0.2496
+ch1.ex7.high,0.1592
+ch1.ex7.low,0.1052
+ch1.ex7.phat,0.1322
+ch1.ex8.df,1197.07
+ch1.ex8.p,0.0611
+ch1.ex8.t,1.87
+ch1.ex9.chi2,1.191
+ch1.ex9.df,1
+ch1.ex9.p,0.2751
+ch2.colleges,16
+ch2.exit.consent,11
+ch2.exit.consent.pct,0.9
+ch2.exit.consent.share,0.0090
+ch2.exit.stayed,992
+ch2.exit.stayed.pct,81.4
+ch2.exit.stayed.share,0.8138
+ch2.exit.transferred,43
+ch2.exit.transferred.pct,3.5
+ch2.exit.transferred.share,0.0353
+ch2.exit.withdrew,173
+ch2.exit.withdrew.pct,14.2
+ch2.exit.withdrew.share,0.1419
+ch2.first_student,S1000017
+ch2.first_student_visits,9
+ch2.invited,"1,600"
+ch2.joined,"1,219"
+ch2.known,"1,208"
+ch2.not_offered,610
+ch2.not_offered.known,603
+ch2.not_offered.withdrew,93
+ch2.not_offered.withdrew.pct,15.4
+ch2.offer_mean,0.4996
+ch2.offered,609
+ch2.offered.known,605
+ch2.offered.withdrew,80
+ch2.offered.withdrew.pct,13.2
+ch2.review.bus.pct,20.7
+ch2.review.cafeteria.other.pct,20
+ch2.review.cafeteria.pizza.pct,40
+ch2.review.cafeteria.salad.pct,15
+ch2.review.cafeteria.sandwich.pct,25
+ch2.review.joined.pct,76.2
+ch2.review.not_offered.stayed.pct,80.9
+ch2.review.not_offered.transferred.pct,3.6
+ch2.review.not_offered.withdrew.pct,15.4
+ch2.review.offered.stayed.pct,83.3
+ch2.review.offered.transferred.pct,3.5
+ch2.review.offered.withdrew.pct,13.2
+ch2.try4.height_ratio,3.6
+ch2.try4.more_pct,16
+ch2.withdrew_known.pct,14.3
+ch2.withdrew_known.share,0.1432
+ch3.L2.eight_plus,49
+ch3.L2.fences,"-4.5, 7.5"
+ch3.L2.five,"0, 0, 1, 3, 25"
+ch3.L2.iqr,3
+ch3.L2.mean,2.507
+ch3.L2.mean_without_max,2.470
+ch3.L2.n,609
+ch3.L2.outliers,49
+ch3.L2.outliers.range,8 to 25
+ch3.L2.sigma,3.102
+ch3.L2.sum,1527
+ch3.L2.sum2,9689
+ch3.L2.sx,3.105
+ch3.L2.two_sd,8.72
+ch3.L2.two_sd.count,34
+ch3.L2.two_sd.from,9
+ch3.L2.whisker,7
+ch3.L2.zero,170
+ch3.L2.zero.pct,27.9
+ch3.L4.eight_plus,37
+ch3.L4.fences,"-4.5, 7.5"
+ch3.L4.five,"0, 0, 1, 3, 16"
+ch3.L4.mean,2.193
+ch3.L4.outliers,37
+ch3.L4.sx,2.731
+ch3.L4.two_sd,7.66
+ch3.L4.two_sd.count,37
+ch3.L4.zero,199
+ch3.L4.zero.pct,32.6
+ch3.b2b.not_offered,"7, 7, 9, 10, 11, 14, 14, 15, 16, 19, 19, 19, 20, 22, 22, 27"
+ch3.b2b.not_offered.median,15.5
+ch3.b2b.offered,"0, 0, 7, 9, 11, 13, 14, 14, 15, 16, 17, 17, 17, 18, 22, 24"
+ch3.b2b.offered.median,14.5
+ch3.college.fences,"58.5, 94.5"
+ch3.college.max,86 (TC15)
+ch3.college.mean,76.19
+ch3.college.med,75.5
+ch3.college.min,65 (TC25)
+ch3.college.quartiles,"72, 81"
+ch3.college.range,21
+ch3.college.sorted,"65, 71, 71, 72, 72, 74, 75, 75, 76, 77, 77, 80, 82, 83, 83, 86"
+ch3.college.ss,460.44
+ch3.college.stems,6 | 5; 7 | 1122455677; 8 | 02336
+ch3.college.sx,5.54
+ch3.college.var,30.70
+ch3.entry.iqr,0.67
+ch3.entry.mean,3.010
+ch3.entry.med,3.00
+ch3.entry.sx,0.469
+ch3.gap,0.314
+ch3.hist2.after18,1
+ch3.hist2.bars,"317, 141, 61, 41, 26, 10, 7, 3, 2"
+ch3.hist2.top,25
+ch3.review.five.fences,"-2, 30"
+ch3.review.minutes.mean,20.0
+ch3.review.minutes.med,15
+ch3.review.minutes.quartiles,"10, 22.5"
+ch3.review.minutes.sx,17.35
+ch3.review.minutes.upper_fence,41.25
+ch3.review.minutes.without60.mean,14.29
+ch3.review.minutes.without60.med,15
+ch3.review.minutes.without60.sx,6.82
+ch3.review.scale.mean,77.2
+ch3.review.scale.sd,10.4
+ch3.review.z.first,1.33
+ch3.review.z.second,1.75
+ch3.units.minus025.iqr,0.67
+ch3.units.minus025.mean,2.760
+ch3.units.minus025.med,2.75
+ch3.units.minus025.sx,0.469
+ch3.units.plus1.mean,3.507
+ch3.units.plus1.med,2
+ch3.units.plus1.quartiles,"1, 4"
+ch3.units.plus1.sx,3.105
+ch3.units.times25.mean,75.25
+ch3.units.times25.sx,11.73
+ch3.z.college,3.67
+ch3.z.college.pctile,87.9
+ch3.z.college.z,1.20
+ch3.z.college.z_sigma,1.20
+ch3.z.entry,3.54
+ch3.z.entry.pctile,86.8
+ch3.z.entry.z,1.13
+ch3.z.entry.z_sigma,1.13
+ch3.z.g12.mean,2.996
+ch3.z.g12.n,"1,116"
+ch3.z.g12.sx,0.561
+ch3.z.student,S1000017
+ch3.z.try.2_50,-1.09
+ch4.balance.gap_points,3.2
+ch4.balance.not_offered.part_time,215
+ch4.balance.not_offered.part_time.pct,35.2
+ch4.balance.offered.part_time,234
+ch4.balance.offered.part_time.pct,38.4
+ch4.blocks.offered.range,49.3 to 50.8
+ch4.consent_withdrawn,11
+ch4.full_time,770
+ch4.full_time.known,760
+ch4.full_time.withdrew,72
+ch4.full_time.withdrew.pct,9.5
+ch4.invited.full_time,960
+ch4.invited.full_time.joined,770
+ch4.invited.full_time.joined.pct,80.2
+ch4.invited.part_time,640
+ch4.invited.part_time.joined,449
+ch4.invited.part_time.joined.pct,70.2
+ch4.not_joined,381
+ch4.not_joined.pct,23.8
+ch4.part_time,449
+ch4.part_time.known,448
+ch4.part_time.share_invited.pct,40
+ch4.part_time.share_joined.pct,36.8
+ch4.part_time.withdrew,101
+ch4.part_time.withdrew.pct,22.5
+ch4.review.systematic.size,48
+ch4.review60.part_time_exact,22.10
+ch4.review60.split,22 and 38
+ch4.srs30.part_time_exact,11.1
+ch4.srs30.split,11 and 19
+ch4.systematic.31_if_start_at_most,19
+ch4.systematic.k,40
+ch4.systematic.sizes,30 or 31
+ch4.try40.part_time_exact,14.7
+ch4.try40.split,15 and 25
+ch4.visits.full_time.mean,2.62
+ch4.visits.part_time.mean,1.89
+ch4.visits.stayed_or_transferred.mean,2.51
+ch4.visits.withdrew.mean,1.43
+samples.100.distinct,100
+samples.100.entry.mean,3.063
+samples.100.md5,f9956cea2e12a0decbf91a76c09e26f6
+samples.100.offered,51
+samples.100.part_time,33
+samples.100.rows_match_population,yes
+samples.100.size,100
+samples.100.withdrew,15
+samples.120.distinct,120
+samples.120.entry.mean,3.019
+samples.120.md5,921031b981a7dd7d703d38234b8ec384
+samples.120.offered,65
+samples.120.part_time,43
+samples.120.rows_match_population,yes
+samples.120.size,120
+samples.120.withdrew,19
+samples.20.distinct,20
+samples.20.entry.mean,3.056
+samples.20.g12.mean,3.157
+samples.20.md5,c51bb34ee5314365d2735a34fa1ac3b5
+samples.20.offered,10
+samples.20.part_time,10
+samples.20.rows_match_population,yes
+samples.20.size,20
+samples.20.withdrew,3
+samples.population.college_grade,"1,116"
+samples.population.college_grade.entry.mean,3.016
+samples.population.college_grade.g12.mean,2.996
+samples.population.known,"1,208"
+samples.population.withdrew.share,0.1432
