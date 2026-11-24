@@ -22,8 +22,9 @@ often students visited support services, and their grades. All of it is invented
 | `python/make_samples.py` | Draws the samples, or with `--check` redraws them in memory and compares |
 | `python/data_summary.py`, `r/data_summary.R` | Two independent routes, standard-library Python and base R, that summarize every file |
 | `python/chapters_1_4.py`, `r/chapters_1_4.R` | The same two routes for every number in Chapters 1 to 4, their Try It answers, and their reviews |
+| `python/chapters_5_8.py`, `r/chapters_5_8.R` | The same for Chapters 5 to 8, with exact values (hypergeometric, binomial, normal) where the book could have simulated, and a simulation check of three of them |
 | `expected/` | The values both routes must give, character for character |
-| `outline/` | The book's outline, chapter by chapter, with every number named and computed (`chapters-1-4.md` from D1) |
+| `outline/` | The book's outline, chapter by chapter, with every number named and computed (`chapters-1-4.md` from D1, `chapters-5-8.md` from D2) |
 | `run_all.py` | Runs the checks and compares the routes |
 | `scripts/` | `check.sh` runs `run_all.py`; `apply-overlay.sh` and `pr.sh` apply the project's overlays as pull requests |
 
