@@ -4,17 +4,24 @@
     python run_all.py                 Python route, and base R if Rscript is found
     python run_all.py --require-r     fail if base R is not found (what CI runs)
 
-1. SHA256SUMS: every file in data/, samples/, and calculator/ is listed, and each matches.
+1. SHA256SUMS: every file in data/, samples/, simulations/, calculator/, and figures/png/ is
+   listed, and each matches.
 2. The three fixed samples in samples/ must equal the draw from seed 2027
-   (python/make_samples.py --check).
+   (python/make_samples.py --check), and so must the two simulations in simulations/
+   (python/make_simulations.py --check).
 3. For each set of values (the data summary, Chapters 1 to 4, Chapters 5 to 8, Chapters 9 to 12,
-   and the back matter's tables), route 1, standard-library Python (python/<set>.py), and route 2,
-   base R (r/<set>.R), each write build/<route>/<set>.csv.
+   the back matter's tables, and the figures), route 1, standard-library Python
+   (python/<set>.py), and route 2, base R (r/<set>.R), each write build/<route>/<set>.csv.
 4. Each route's values must equal expected/<set>.csv, name for name, character for
    character. No name may appear in two sets, since the book reads them all together.
    Chapters 5 to 8 also check three simulations against their exact values, each route with
    its own random numbers, within a stated tolerance; those print a line each and are not
-   compared between the routes.
+   compared between the routes. The figures' set checks its two simulations against the model
+   the same way.
+
+The figures themselves are drawn by figures/draw.py, which needs matplotlib; it is not run here.
+It recomputes every value in expected/figures.csv from the data and stops unless each one
+matches (CI runs it).
 
 The last line is STEP_BY_STEP_DATA_OK when everything matches. Standard library only;
 Python 3.10 or later. R needs no add-on packages.
@@ -29,6 +36,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+FOLDERS = ("data", "samples", "simulations", "calculator", "figures/png")
 problems = []
 
 
@@ -38,10 +46,10 @@ def sums():
         if line.strip():
             digest, name = line.split(maxsplit=1)
             listed[name.lstrip("*")] = digest
-    found = sorted(p.relative_to(ROOT).as_posix() for d in ("data", "samples", "calculator") for p in (ROOT / d).iterdir()
+    found = sorted(p.relative_to(ROOT).as_posix() for d in FOLDERS for p in (ROOT / d).iterdir()
                    if p.is_file() and p.name != "SOURCE.md")
     if sorted(listed) != found:
-        problems.append(f"SHA256SUMS lists {sorted(listed)}, but data/, samples/, and calculator/ hold {found}")
+        problems.append(f"SHA256SUMS lists {sorted(listed)}, but {', '.join(d + '/' for d in FOLDERS)} hold {found}")
     for name, digest in listed.items():
         p = ROOT / name
         if not p.is_file() or hashlib.sha256(p.read_bytes()).hexdigest() != digest:
@@ -99,7 +107,12 @@ def main():
     print((check.stdout or "").strip().splitlines()[-1] if check.stdout else "make_samples.py printed nothing")
     if check.returncode != 0:
         problems.append("samples/: the files do not equal the draw from seed 2027 (python/make_samples.py --check)")
-    sets = ["data_summary", "chapters_1_4", "chapters_5_8", "chapters_9_12", "tables"]
+    check = subprocess.run([sys.executable, "-I", str(ROOT / "python" / "make_simulations.py"), "--check"],
+                           capture_output=True, text=True, env=env)
+    print((check.stdout or "").strip().splitlines()[-1] if check.stdout else "make_simulations.py printed nothing")
+    if check.returncode != 0:
+        problems.append("simulations/: the files do not equal the draw from seed 2027 (python/make_simulations.py --check)")
+    sets = ["data_summary", "chapters_1_4", "chapters_5_8", "chapters_9_12", "tables", "figures"]
     want = {name: read(ROOT / "expected" / f"{name}.csv") for name in sets}
     seen = {}
     for name in sets:
@@ -132,7 +145,7 @@ def main():
         sys.exit(1)
     counts = " ".join(f"{name}={len(want[name])}" for name in sets)
     print(f"STEP_BY_STEP_DATA_OK files={files} values={sum(len(v) for v in want.values())} ({counts}) "
-          f"samples=3 routes={','.join(routes)}")
+          f"samples=3 simulations=2 routes={','.join(routes)}")
 
 
 if __name__ == "__main__":
