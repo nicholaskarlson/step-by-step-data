@@ -1,9 +1,12 @@
 # The figures
 
-From overlay D4, the book's 21 figures, drawn by `draw.py` from the data files and the two
-simulations, as grayscale PNGs, 6 inches wide at 300 ppi, for a black-and-white paperback. Every
-number a figure draws or prints is in `expected/figures.csv`, computed twice (`python/figures.py`
-and `r/figures.R`). `draw.py` recomputes each one from the data and stops unless it matches.
+The book's 29 figures, drawn by `draw.py` as grayscale PNGs, 6 inches wide at 300 ppi, for a
+black-and-white paperback. Figures 1 to 21 (overlay D4) are the chapters', from the data files and
+the two simulations; every number they draw or print is in `expected/figures.csv`, computed twice
+(`python/figures.py` and `r/figures.R`). Figures 22 to 29 (overlay D5) are the practice test's,
+from the invented data in `practice/`; their numbers are the `pt.figNN` values in
+`expected/practice.csv` (`python/practice.py` and `r/practice.R`). `draw.py` recomputes each value
+from the data and stops unless it matches.
 
 | # | File | Book section | What it shows | Values (`fig.NN.*`) |
 | --- | --- | --- | --- | --- |
@@ -28,6 +31,20 @@ and `r/figures.R`). `draw.py` recomputes each one from the data and stops unless
 | 19 | `png/fig19.png` | 11.1, 11.2 | Scatterplot of college grade against school grade (555 students), with the least-squares line | 0.636 + 0.772x; r = 0.618 |
 | 20 | `png/fig20.png` | 11.3 | The residual plot for that line | residuals from −1.592 to 1.480 |
 | 21 | `png/fig21.png` | 11.5 | The seven grade bands: the straight line's residuals bend; the log line's do not | both sets of seven residuals |
+
+The practice test's figures (`outline/practice-test.md`) show the data a question asks about and
+nothing that gives its answer away.
+
+| # | File | Question | What it shows | Values (`pt.figNN.*`) |
+| --- | --- | --- | --- | --- |
+| 22 | `png/fig22.png` | 2 | Histogram of 80 riders' waits at a bus stop, bars 4 minutes wide | bars 37, 19, 12, 5, 5, 1, 0, 0, 1 |
+| 23 | `png/fig23.png` | 4 | Modified box plots of battery life, Models A and B | five-number summaries; Model A's outlier 22.4 |
+| 24 | `png/fig24.png` | 13 | Dotplot of 200 reruns' differences in shares, with the observed 0.20 marked | the 13 counts; 12 at 0.20 or more |
+| 25 | `png/fig25.png` | 26 | Segmented bars of main news source by age group | the six percentages |
+| 26 | `png/fig26.png` | 30 | Dotplot of 12 customers' checkout waits | the 12 values |
+| 27 | `png/fig27.png` | 35 to 37, 39 | Scatterplot of iced drinks sold against the day's high, with the least-squares line | −210.760 + 5.347x |
+| 28 | `png/fig28.png` | 38 | Residual plot for stopping distance against speed | the 12 residuals |
+| 29 | `png/fig29.png` | W2 | Dotplots of 25 bike and 25 bus commutes | both sets of 25 values |
 
 ## Draw or check them
 
