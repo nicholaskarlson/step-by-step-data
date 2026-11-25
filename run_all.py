@@ -7,9 +7,9 @@
 1. SHA256SUMS: every file in data/, samples/, and calculator/ is listed, and each matches.
 2. The three fixed samples in samples/ must equal the draw from seed 2027
    (python/make_samples.py --check).
-3. For each set of values (the data summary, Chapters 1 to 4, and Chapters 5 to 8), route 1, standard-library
-   Python (python/<set>.py), and route 2, base R (r/<set>.R), each write
-   build/<route>/<set>.csv.
+3. For each set of values (the data summary, Chapters 1 to 4, Chapters 5 to 8, Chapters 9 to 12,
+   and the back matter's tables), route 1, standard-library Python (python/<set>.py), and route 2,
+   base R (r/<set>.R), each write build/<route>/<set>.csv.
 4. Each route's values must equal expected/<set>.csv, name for name, character for
    character. No name may appear in two sets, since the book reads them all together.
    Chapters 5 to 8 also check three simulations against their exact values, each route with
@@ -99,7 +99,7 @@ def main():
     print((check.stdout or "").strip().splitlines()[-1] if check.stdout else "make_samples.py printed nothing")
     if check.returncode != 0:
         problems.append("samples/: the files do not equal the draw from seed 2027 (python/make_samples.py --check)")
-    sets = ["data_summary", "chapters_1_4", "chapters_5_8"]
+    sets = ["data_summary", "chapters_1_4", "chapters_5_8", "chapters_9_12", "tables"]
     want = {name: read(ROOT / "expected" / f"{name}.csv") for name in sets}
     seen = {}
     for name in sets:
