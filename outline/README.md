@@ -17,3 +17,5 @@ checks then require every printed number to match.
 - D3: Chapters 9 to 12 (chi-square tests; inference for means; regression; the eight investigations),
   with the chapter reviews, the items the outline left open, and the back matter's three tables:
   `chapters-9-12.md` (324 values, and 145 table rows).
+- D4: the 21 figures for overlay C6a: `../figures/README.md` lists each figure, its section, and
+  the values it draws (75 values in `expected/figures.csv`).

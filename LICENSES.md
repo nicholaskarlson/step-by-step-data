@@ -8,8 +8,12 @@ Copyright © 2026 Nicholas Elliott Karlson.
   are CC BY 4.0 too.
 - **The three fixed samples** (`samples/`, from overlay D1): CC BY 4.0. They are row selections
   from `data/tonmick-classroom.csv`.
+- **The two simulations** (`simulations/`, from overlay D4): CC BY 4.0. They summarize random
+  samples of `data/tonmick-classroom.csv`.
+- **The figures** (`figures/png/`, from overlay D4): CC BY 4.0. They are drawn from the data files
+  and the simulations.
 - **The outline** (`outline/`, from overlay D1): CC BY 4.0.
-- **Code** (`run_all.py`, `python/`, `r/`, `scripts/`, `.github/`): MIT License (`LICENSE`).
+- **Code** (`run_all.py`, `python/`, `r/`, `figures/draw.py`, `scripts/`, `.github/`): MIT License (`LICENSE`).
 - **Trademarks.** Neither license covers the NEKpress name, the series branding, or anyone else's
   trademark. TI-84 Plus CE and TI Connect CE are trademarks of Texas Instruments, which is not
   affiliated with, and does not endorse, this repository.

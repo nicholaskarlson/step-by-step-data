@@ -47,3 +47,17 @@ jobs:
         run: git clone --depth 1 --branch v1.0.1 https://github.com/nicholaskarlson/predict.git build/predict
       - name: Rebuild and compare, byte for byte
         run: python -I python/make_data.py build/predict --check
+
+  figures:
+    name: draw the figures and check their numbers
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install matplotlib
+        run: python -m pip install -r figures/requirements.txt
+      - name: Recompute every figure value, draw every figure, check the committed PNGs
+        run: python figures/draw.py
