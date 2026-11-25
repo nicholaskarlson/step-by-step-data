@@ -19,3 +19,6 @@ checks then require every printed number to match.
   `chapters-9-12.md` (324 values, and 145 table rows).
 - D4: the 21 figures for overlay C6a: `../figures/README.md` lists each figure, its section, and
   the values it draws (75 values in `expected/figures.csv`).
+- D5: the practice test for overlay C6b, 40 multiple-choice and 4 written questions in new,
+  invented settings, with every choice, trap, and model-answer value, and Figures 22 to 29:
+  `practice-test.md` (391 values in `expected/practice.csv`, from the data in `../practice/`).

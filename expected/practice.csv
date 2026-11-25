@@ -1,0 +1,392 @@
+name,value
+pt.fig22.bars,"37, 19, 12, 5, 5, 1, 0, 0, 1"
+pt.fig22.n,80
+pt.fig22.top,35.6
+pt.fig23.A.five,"14.4, 15.8, 17.15, 18.2, 22.4"
+pt.fig23.A.out,22.4
+pt.fig23.A.whiskers,"14.4, 19.2"
+pt.fig23.B.five,"11.1, 13.9, 16.2, 17.8, 23.6"
+pt.fig23.B.out,none
+pt.fig23.B.whiskers,"11.1, 23.6"
+pt.fig24.counts,"4, 2, 9, 13, 23, 32, 26, 37, 29, 13, 8, 2, 2"
+pt.fig24.diffs,"-0.30, -0.25, -0.20, -0.15, -0.10, -0.05, 0.00, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30"
+pt.fig24.ge,12
+pt.fig24.reruns,200
+pt.fig25.over40.pct,"40.0, 43.3, 16.7"
+pt.fig25.under40.pct,"63.3, 26.7, 10.0"
+pt.fig26.values,"1.8, 2.1, 2.4, 2.5, 2.8, 3.4, 3.6, 3.9, 4.7, 5.5, 8.3, 14.6"
+pt.fig27.line,"-210.760, 5.347"
+pt.fig27.n,25
+pt.fig27.x_range,"60, 95"
+pt.fig28.res,"31.0, 8.6, -6.8, -4.2, -18.6, -11.0, -21.5, -2.9, -8.3, -2.7, 12.9, 23.5"
+pt.fig28.speeds,"20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75"
+pt.fig29.bike,"9, 11, 11, 13, 13, 15, 15, 15, 16, 16, 17, 17, 17, 17, 17, 18, 18, 18, 19, 19, 19, 19, 24, 24, 24"
+pt.fig29.bus,"12, 14, 14, 14, 15, 15, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22, 24, 24, 25, 25, 26, 31, 48"
+pt.q02.five,"0.5, 1.85, 4.95, 9.15, 35.6"
+pt.q02.mean,6.43
+pt.q02.median,4.95
+pt.q02.n,80
+pt.q02.sd,6.07
+pt.q03.factor,1.8
+pt.q03.mean_c,20.0
+pt.q03.mean_f,68.0
+pt.q03.sd_c,2.5
+pt.q03.sd_f,4.5
+pt.q03.shift,32
+pt.q03.trap.mean_unshifted,36.0
+pt.q03.trap.sd_shifted,36.5
+pt.q04.A.fences,"12.20, 21.80"
+pt.q04.A.iqr,2.4
+pt.q04.A.mean,17.09
+pt.q04.A.n,30
+pt.q04.A.range,8.0
+pt.q04.A.sd,1.62
+pt.q04.B.fences,"8.05, 23.65"
+pt.q04.B.iqr,3.9
+pt.q04.B.mean,16.02
+pt.q04.B.n,30
+pt.q04.B.range,12.5
+pt.q04.B.sd,3.02
+pt.q05.mean_1,74
+pt.q05.mean_2,81
+pt.q05.score_1,82
+pt.q05.score_2,88
+pt.q05.sd_1,5
+pt.q05.sd_2,6
+pt.q05.z_1,1.60
+pt.q05.z_2,1.17
+pt.q06.fence_hi,34
+pt.q06.fence_lo,2
+pt.q06.iqr,8
+pt.q06.max,37
+pt.q06.median,17
+pt.q06.min,6
+pt.q06.n,30
+pt.q06.q1,14
+pt.q06.q3,22
+pt.q06.trap.two_iqr,38
+pt.q09.chosen,5
+pt.q09.shelves,40
+pt.q10.per_bed,30
+pt.q10.per_group,15
+pt.q10.plants,60
+pt.q11.adult_no,130
+pt.q11.adult_yes,120
+pt.q11.adults_of_users,0.558
+pt.q11.child_no,110
+pt.q11.child_yes,40
+pt.q11.n,500
+pt.q11.nonusers,285
+pt.q11.rows,"150, 250, 100"
+pt.q11.senior_no,45
+pt.q11.senior_yes,55
+pt.q11.trap.joint,0.240
+pt.q11.trap.users,0.430
+pt.q11.trap.users_of_adults,0.480
+pt.q11.users,215
+pt.q12.more,1000
+pt.q12.p,0.5
+pt.q12.pct,70
+pt.q12.red,7
+pt.q12.spins,10
+pt.q13.diff,0.20
+pt.q13.exact,0.0548
+pt.q13.flowered,32
+pt.q13.flowered_a,20
+pt.q13.flowered_b,12
+pt.q13.ge,12
+pt.q13.n_a,40
+pt.q13.n_b,40
+pt.q13.reruns,200
+pt.q13.seedlings,80
+pt.q13.share,0.06
+pt.q13.share_a,0.50
+pt.q13.share_b,0.30
+pt.q13.trap.complement,0.94
+pt.q13.trap.per100,0.12
+pt.q14.a_given_b,0.40
+pt.q14.b_given_a,0.25
+pt.q14.p_a,0.40
+pt.q14.p_ab,0.10
+pt.q14.p_b,0.25
+pt.q14.product,0.10
+pt.q14.trap.union_no_overlap,0.65
+pt.q14.union,0.55
+pt.q15.delivery_given_late,0.632
+pt.q15.joint_delivery,0.024
+pt.q15.joint_pickup,0.014
+pt.q15.p_delivery,0.30
+pt.q15.p_delivery_pct,30
+pt.q15.p_late,0.038
+pt.q15.p_late_delivery,0.08
+pt.q15.p_late_delivery_pct,8
+pt.q15.p_late_pickup,0.02
+pt.q15.p_late_pickup_pct,2
+pt.q15.p_pickup,0.70
+pt.q15.trap.late_given_delivery,0.080
+pt.q16.mu,1.7
+pt.q16.p,"0.1, 0.3, 0.4, 0.2"
+pt.q16.sigma,0.90
+pt.q16.trap.mean_values,1.5
+pt.q16.trap.sd_values,1.12
+pt.q16.var,0.81
+pt.q16.x,"0, 1, 2, 3"
+pt.q17.ge2,0.6242
+pt.q17.n,10
+pt.q17.p,0.2
+pt.q17.p0,0.1074
+pt.q17.p1,0.2684
+pt.q17.trap.eq2,0.3020
+pt.q17.trap.gt2,0.3222
+pt.q17.trap.le2,0.6778
+pt.q18.area,0.95
+pt.q18.cutoff,463.9
+pt.q18.mean,454
+pt.q18.sd,6
+pt.q18.top_pct,5
+pt.q18.trap.area,459.7
+pt.q18.trap.lower,444.1
+pt.q18.trap.two_tailed,465.8
+pt.q18.z,1.645
+pt.q19.cut,0.43
+pt.q19.n,144
+pt.q19.np,51.84
+pt.q19.nq,92.16
+pt.q19.p,0.36
+pt.q19.p_pct,36
+pt.q19.prob,0.0401
+pt.q19.q,0.64
+pt.q19.sd,0.040
+pt.q19.trap.lower,0.9599
+pt.q19.trap.one,0.4420
+pt.q19.trap.sd_one,0.48
+pt.q19.trap.two_tails,0.0801
+pt.q19.z,1.75
+pt.q20.ci,"0.320, 0.440"
+pt.q20.conf,95
+pt.q20.me,0.0602
+pt.q20.n,250
+pt.q20.phat,0.38
+pt.q20.se,0.0307
+pt.q20.trap.ci90,"0.330, 0.430"
+pt.q20.trap.no_root,"0.378, 0.382"
+pt.q20.trap.no_zstar,"0.349, 0.411"
+pt.q20.x,95
+pt.q20.zstar,1.960
+pt.q21.conf,95
+pt.q21.hi,0.29
+pt.q21.lo,0.21
+pt.q22.conf,95
+pt.q22.exact,1067.1
+pt.q22.margin,0.03
+pt.q22.n,1068
+pt.q22.p_star,0.5
+pt.q22.trap.down,1067
+pt.q22.trap.n90,752
+pt.q22.trap.no_square,33
+pt.q23.n,150
+pt.q23.np0,90
+pt.q23.nq0,60
+pt.q23.p,0.0668
+pt.q23.p0,0.60
+pt.q23.p0_pct,60
+pt.q23.phat,0.54
+pt.q23.sd0,0.040
+pt.q23.trap.p_phat,0.0702
+pt.q23.trap.se_phat,0.0407
+pt.q23.trap.two_sided,0.1336
+pt.q23.trap.upper,0.9332
+pt.q23.trap.z_phat,-1.47
+pt.q23.x,81
+pt.q23.z,-1.50
+pt.q24.p0,0.60
+pt.q24.p0_pct,60
+pt.q25.ci,"0.003, 0.177"
+pt.q25.diff,0.09
+pt.q25.n,400
+pt.q25.n_1,200
+pt.q25.n_2,200
+pt.q25.p,0.0438
+pt.q25.phat_1,0.32
+pt.q25.phat_2,0.23
+pt.q25.pooled,0.275
+pt.q25.se,0.04465
+pt.q25.trap.one_sided,0.0219
+pt.q25.trap.p_one_n,0.0001
+pt.q25.trap.p_unpooled,0.0428
+pt.q25.trap.se_unpooled,0.0444
+pt.q25.trap.z_one_n,4.03
+pt.q25.trap.z_unpooled,2.03
+pt.q25.x_1,64
+pt.q25.x_2,46
+pt.q25.z,2.02
+pt.q26.chi2,16.36
+pt.q26.cols,"155, 105, 40"
+pt.q26.df,2
+pt.q26.expected,"77.5, 52.5, 20.0, 77.5, 52.5, 20.0"
+pt.q26.n,300
+pt.q26.over40_phone,60
+pt.q26.over40_print,25
+pt.q26.over40_tv,65
+pt.q26.p,0.0003
+pt.q26.rows,"150, 150"
+pt.q26.trap.cells_less_one,5
+pt.q26.under40_phone,95
+pt.q26.under40_print,15
+pt.q26.under40_tv,40
+pt.q27.alternate_died,16
+pt.q27.alternate_survived,44
+pt.q27.chi2,9.13
+pt.q27.cols,"125, 55"
+pt.q27.daily_died,9
+pt.q27.daily_survived,41
+pt.q27.df,2
+pt.q27.expected,"34.72, 15.28, 41.67, 18.33, 48.61, 21.39"
+pt.q27.expected_weekly_died,21.39
+pt.q27.n,180
+pt.q27.p,0.0104
+pt.q27.rows,"50, 60, 70"
+pt.q27.trap.equal_split,18.33
+pt.q27.trap.weekly_survived,48.61
+pt.q27.weekly_died,30
+pt.q27.weekly_survived,40
+pt.q28.cut,52
+pt.q28.mu,48
+pt.q28.n,36
+pt.q28.prob,0.0228
+pt.q28.sd,2
+pt.q28.sigma,12
+pt.q28.trap.lower,0.9772
+pt.q28.trap.sigma,0.3694
+pt.q28.trap.two_tails,0.0455
+pt.q28.z,2.00
+pt.q29.ci,"20.84, 25.96"
+pt.q29.conf,95
+pt.q29.df,15
+pt.q29.me,2.56
+pt.q29.mean,23.4
+pt.q29.n,16
+pt.q29.s,4.8
+pt.q29.se,1.20
+pt.q29.trap.ci90,"21.30, 25.50"
+pt.q29.trap.no_root,"13.17, 33.63"
+pt.q29.trap.tstar90,1.753
+pt.q29.trap.z,"21.05, 25.75"
+pt.q29.tstar,2.131
+pt.q30.fence_hi,9.075
+pt.q30.five,"1.8, 2.45, 3.5, 5.1, 14.6"
+pt.q30.iqr,2.65
+pt.q30.mean,4.63
+pt.q30.n,12
+pt.q30.out,14.6
+pt.q30.values,"1.8, 3.6, 2.8, 8.3, 4.7, 2.4, 2.5, 5.5, 14.6, 2.1, 3.4, 3.9"
+pt.q31.runners,10
+pt.q32.df,9
+pt.q32.diffs,"2, -3, -4, 5, -2, 4, 0, 9, -1, 6"
+pt.q32.mean,1.60
+pt.q32.n,10
+pt.q32.p,0.2695
+pt.q32.sd,4.300
+pt.q32.se,1.360
+pt.q32.t,1.18
+pt.q32.trap.no_root,0.37
+pt.q32.trap.over_n,3.72
+pt.q32.trap.two_sample,0.16
+pt.q33.diff,4.5
+pt.q33.mean_1,72.5
+pt.q33.mean_2,68.0
+pt.q33.n_1,40
+pt.q33.n_2,35
+pt.q33.s_1,8.0
+pt.q33.s_2,10.5
+pt.q33.se,2.1794
+pt.q33.t,2.06
+pt.q33.trap.add_se,1.48
+pt.q33.trap.no_n,0.34
+pt.q33.trap.no_square,6.36
+pt.q34.n,40
+pt.q34.per_group,20
+pt.q35.n,25
+pt.q35.r,0.929
+pt.q35.x_range,"60, 95"
+pt.q36.a,-210.760
+pt.q36.b,5.347
+pt.q37.day,8
+pt.q37.drinks,345
+pt.q37.high,94
+pt.q37.predicted,291.9
+pt.q37.residual,53.1
+pt.q37.trap.no_intercept,-157.6
+pt.q37.trap.sign,-53.1
+pt.q38.line,"-105.703, 6.283"
+pt.q38.n,12
+pt.q38.r,0.990
+pt.q39.r2,0.862
+pt.q39.r2_pct,86.2
+pt.q40.a,21.2
+pt.q40.b,1.44
+pt.q40.mean_x,20
+pt.q40.mean_y,50
+pt.q40.predicted,57.2
+pt.q40.r,0.60
+pt.q40.sd_x,5
+pt.q40.sd_y,12
+pt.q40.trap.flipped_a,45.0
+pt.q40.trap.flipped_b,0.25
+pt.q40.trap.no_r_a,2.0
+pt.q40.trap.no_r_b,2.40
+pt.q40.trap.swapped_a,-52.0
+pt.q40.x_new,25
+pt.w1.days,30
+pt.w1.per_group,15
+pt.w2.bike.fences,"9, 25"
+pt.w2.bike.five,"9, 15, 17, 19, 24"
+pt.w2.bike.iqr,4
+pt.w2.bike.mean,16.84
+pt.w2.bike.n,25
+pt.w2.bike.out,none
+pt.w2.bike.sd,3.80
+pt.w2.bus.fences,"2.75, 36.75"
+pt.w2.bus.five,"12, 15.5, 19, 24, 48"
+pt.w2.bus.iqr,8.5
+pt.w2.bus.mean,20.60
+pt.w2.bus.n,25
+pt.w2.bus.out,48
+pt.w2.bus.sd,7.32
+pt.w2.bus.z30,1.28
+pt.w3.alpha,0.05
+pt.w3.alpha_pct,5
+pt.w3.ci,"11.849, 11.995"
+pt.w3.conf,95
+pt.w3.df,19
+pt.w3.fences,"11.5025, 12.3625"
+pt.w3.five,"11.59, 11.825, 11.945, 12.04, 12.18"
+pt.w3.iqr,0.215
+pt.w3.me,0.073
+pt.w3.mean,11.922
+pt.w3.median,11.945
+pt.w3.n,20
+pt.w3.out,none
+pt.w3.p,0.0190
+pt.w3.range,"11.59, 12.18"
+pt.w3.sd,0.1564
+pt.w3.se,0.0350
+pt.w3.t,-2.23
+pt.w3.target,12
+pt.w3.tstar,2.093
+pt.w3.values,"11.59, 11.83, 11.74, 11.86, 12.08, 12.06, 12.06, 11.98, 11.94, 12.02, 11.67, 12.14, 11.73, 11.92, 11.99, 11.95, 11.82, 11.91, 12.18, 11.97"
+pt.w4.exact,0.0178
+pt.w4.n,200
+pt.w4.n_small,10
+pt.w4.np,16
+pt.w4.nq,184
+pt.w4.p,0.08
+pt.w4.p_none,0.4344
+pt.w4.p_pct,8
+pt.w4.p_some,0.5656
+pt.w4.phat,0.125
+pt.w4.prob,0.0095
+pt.w4.q,0.92
+pt.w4.sd,0.01918
+pt.w4.x,25
+pt.w4.z,2.35

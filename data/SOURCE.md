@@ -71,3 +71,39 @@ share, 0.1432.
 | --- | --- | --- |
 | `simulations/tonmick-sim-means-30.csv` | 1,000 | `99353e7e62076f737c246521308e19c3ad20ecde667e5366e434a7acfc0ec6e5` |
 | `simulations/tonmick-sim-samples-100.csv` | 50 | `30de7da987963e20d7c3865cc6fb5eb5a27a1e92559f0418deb9450966f84775` |
+
+## The practice test's data (`practice/`, from overlay D5)
+
+These data are not Tonmick data: every setting in the book's practice test is invented, and so
+are its numbers, so a student practices reading an unfamiliar setting.
+
+- **`givens.csv`** holds every number a question states (a sample size, a mean, a table's counts),
+  chosen by hand. It is not drawn, and `make_practice.py` leaves it alone.
+- **Nine data sets**, for the questions and figures that show data, were drawn once by
+  `python/make_practice.py` on November 25, 2026, with seed 2027. Its models were written before
+  the first run and not changed after; the questions were then written to fit what was drawn.
+  The draw uses only `random.Random(2027).random()` and arithmetic every platform does alike: a
+  standard normal value is the sum of twelve `random()` values minus 6, and a right-skewed value
+  adds squares of such values. `make_practice.py` lists each model and the order of the draws.
+- **What came out**, for the record: the waits are skewed right (mean 6.43, median 4.95); Model A
+  has one high outlier and Model B none; 12 of the 200 reruns gave a difference of 0.20 or more
+  (the exact share is 0.0548); the checkout sample has its outlier at 14.6; the runners' mean
+  difference is 1.60 seconds (t = 1.18); the iced-drink line has r = 0.929; the stopping
+  distances' residuals curve; the bus commutes have one outlier, 48; and the cups' mean fill is
+  11.922 ounces (t = −2.23).
+
+`make_practice.py --check` redraws the nine files in memory and compares byte for byte. Both
+routes read them; neither redraws them.
+
+| File | Rows | SHA-256 |
+| --- | --- | --- |
+| `practice/givens.csv` | 113 | `7c2a3a340135a1fc44c011d612545cf4265994be464eb29140cef1fa9a11931a` |
+| `practice/practice-batteries.csv` | 60 | `0020a77ba616f5df3c98e03ac523161ef9c533320e69f885743134bd7c27dbc7` |
+| `practice/practice-checkout.csv` | 12 | `4834cc260dd0772460669fa8b45d9287a91386c20d7db48bd4fde4181c622718` |
+| `practice/practice-commute.csv` | 50 | `7ce40a76d56640b50ed00719347b6c9ec639362225d62508cc405e19a0b5f0db` |
+| `practice/practice-fill.csv` | 20 | `495d03a5d905208438c886dba931b9e743bf2eb5df15c37d4ef2b6c31464df36` |
+| `practice/practice-flowering-sim.csv` | 200 | `5058f61947ba10263e1523a78c52aff1aafbd917b5116f5b99eed431eb85453d` |
+| `practice/practice-iced.csv` | 25 | `0e68fff06f4b204312c118eae7336d1f5c5b534fb3e7c4f244122215d70721c3` |
+| `practice/practice-shoes.csv` | 10 | `46bec4aefe545d9a357ff059d1ff32c4cd15a1ec60d84ca0aa97718df5ef60b7` |
+| `practice/practice-stopping.csv` | 12 | `8121cff804ccfbe301ac19323dccde3db5619e015330c9874adfd21b41755ebb` |
+| `practice/practice-waits.csv` | 80 | `56bb756bcb596b764cb827063f971e8524a49467e9938053c6f51d90517016ff` |

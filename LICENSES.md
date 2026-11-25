@@ -10,8 +10,10 @@ Copyright © 2026 Nicholas Elliott Karlson.
   from `data/tonmick-classroom.csv`.
 - **The two simulations** (`simulations/`, from overlay D4): CC BY 4.0. They summarize random
   samples of `data/tonmick-classroom.csv`.
-- **The figures** (`figures/png/`, from overlay D4): CC BY 4.0. They are drawn from the data files
-  and the simulations.
+- **The practice data** (`practice/`, from overlay D5): CC BY 4.0. Invented for the book's
+  practice test: nine data sets drawn with seed 2027, and the numbers its questions state.
+- **The figures** (`figures/png/`, from overlay D4 and D5): CC BY 4.0. They are drawn from the data
+  files, the simulations, and the practice data.
 - **The outline** (`outline/`, from overlay D1): CC BY 4.0.
 - **Code** (`run_all.py`, `python/`, `r/`, `figures/draw.py`, `scripts/`, `.github/`): MIT License (`LICENSE`).
 - **Trademarks.** Neither license covers the NEKpress name, the series branding, or anyone else's

@@ -1,19 +1,23 @@
 #!/usr/bin/env python3
-"""Draw the book's 21 figures, and check that they draw the numbers both routes computed.
+"""Draw the book's 29 figures, and check that they draw the numbers both routes computed.
 
-    python figures/draw.py              check: recompute every number in expected/figures.csv from the
-                                        data, draw every figure into a temporary folder, and check the
-                                        committed PNGs in figures/png/ (what CI runs)
+    python figures/draw.py              check: recompute every number in expected/figures.csv, and every
+                                        pt.fig value in expected/practice.csv, from the data, draw every
+                                        figure into a temporary folder, and check the committed PNGs in
+                                        figures/png/ (what CI runs)
     python figures/draw.py --write      draw the figures into figures/png/ (then update SHA256SUMS)
 
-Needs matplotlib (figures/requirements.txt); everything else in this repository needs only the
-standard library. This script does not share code with python/figures.py or r/figures.R: it
-recomputes, from data/ and simulations/, every value it draws or prints, and stops unless each one
-equals expected/figures.csv, character for character. The committed PNGs are not compared pixel
+Figures 1 to 21 are the chapters'; Figures 22 to 29 are the practice test's, from the invented
+data in practice/. Needs matplotlib (figures/requirements.txt); everything else in this repository
+needs only the standard library. This script does not share code with python/figures.py,
+python/practice.py, or the R routes: it recomputes, from data/, simulations/, and practice/, every
+value it draws or prints, and stops unless each one equals expected/figures.csv or
+expected/practice.csv, character for character. The committed PNGs are not compared pixel
 for pixel, since fonts and matplotlib versions move pixels; they are checked for their size,
 resolution (300 ppi), and grayscale, and SHA256SUMS pins their bytes.
 
-Every figure is 6 inches wide at 300 ppi, in shades of gray, for a black-and-white paperback.
+Every figure is 6 inches wide at 300 ppi, in shades of gray, for a black-and-white paperback. The
+practice test's figures show the data a question asks about and nothing that gives its answer away.
 """
 import csv
 import io
@@ -70,9 +74,12 @@ def rows(path):
 
 
 def expected():
-    with open(ROOT / "expected" / "figures.csv", newline="", encoding="utf-8") as fh:
-        r = list(csv.reader(fh))
-    return {a: b for a, b in r[1:]}
+    out = {}
+    for name in ("figures", "practice"):
+        with open(ROOT / "expected" / f"{name}.csv", newline="", encoding="utf-8") as fh:
+            r = list(csv.reader(fh))
+        out.update({a: b for a, b in r[1:] if name == "figures" or a.startswith("pt.fig")})
+    return out
 
 
 def ti_five(v):
@@ -540,8 +547,181 @@ def fig21(d):
                  "fig.21.log.res": j(f(e, 3) for e in log)}
 
 
+# ---------------------------------------------------------------- the practice test's figures
+
+def givens():
+    out = {}
+    for r in rows("practice/givens.csv"):
+        out[(r["item"], r["name"])] = r["value"]
+    return out
+
+
+def box_row(ax, row, v):
+    s = ti_five(v)
+    iqr = s[3] - s[1]
+    lo, hi = s[1] - 1.5 * iqr, s[3] + 1.5 * iqr
+    inside = [x for x in v if lo <= x <= hi]
+    outs = sorted(x for x in v if x < lo or x > hi)
+    ax.add_patch(plt.Rectangle((s[1], row - 0.22), s[3] - s[1], 0.44, facecolor=PALE, edgecolor=INK, linewidth=0.8))
+    ax.plot([s[2], s[2]], [row - 0.22, row + 0.22], color=INK, linewidth=1.6)
+    for a, b in ((s[1], min(inside)), (s[3], max(inside))):
+        ax.plot([a, b], [row, row], color=INK, linewidth=0.8)
+        ax.plot([b, b], [row - 0.1, row + 0.1], color=INK, linewidth=0.8)
+    ax.plot(outs, [row] * len(outs), "o", markerfacecolor="white", markeredgecolor=INK, markersize=3.5)
+    return s, [min(inside), max(inside)], outs
+
+
+def stack(ax, values, y0=0.0, step=1.0, size=3.2, hollow=False):
+    seen = {}
+    for v in sorted(values):
+        seen[v] = seen.get(v, 0) + 1
+        ax.plot(v, y0 + seen[v] * step, "o", markersize=size, markeredgecolor=INK, markeredgewidth=0.7,
+                markerfacecolor=("white" if hollow else INK))
+    return max(seen.values())
+
+
+def fig22(d):
+    w = [float(r["minutes"]) for r in rows("practice/practice-waits.csv")]
+    c = counts_in(w, 0, 4, 9)
+    fig, ax = new(2.3)
+    ax.bar(np.arange(0, 36, 4), c, width=4, align="edge", color=LIGHT, edgecolor=INK, linewidth=0.6)
+    ax.set_xticks(range(0, 37, 4))
+    ax.set_xlabel("Wait at the bus stop (minutes)")
+    ax.set_ylabel("Riders")
+    return fig, {"pt.fig22.bars": j(c), "pt.fig22.n": str(len(w)), "pt.fig22.top": g(max(w))}
+
+
+def fig23(d):
+    bat = rows("practice/practice-batteries.csv")
+    fig, ax = new(1.9)
+    facts = {}
+    for row, mod in ((1, "A"), (0, "B")):
+        v = [float(r["hours"]) for r in bat if r["model"] == mod]
+        s, wh, outs = box_row(ax, row, v)
+        facts.update({f"pt.fig23.{mod}.five": j(g(x) for x in s), f"pt.fig23.{mod}.whiskers": j(g(x) for x in wh),
+                      f"pt.fig23.{mod}.out": j(g(x) for x in outs) if outs else "none"})
+    ax.set_yticks([0, 1], ["Model B", "Model A"])
+    ax.set_ylim(-0.6, 1.6)
+    ax.set_xlim(10, 25)
+    ax.set_xticks(range(10, 26, 1))
+    ax.set_xlabel("Battery life (hours; an open dot is an outlier)")
+    return fig, facts
+
+
+def fig24(d):
+    gv = givens()
+    na, nb = int(gv[("q13", "n_a")]), int(gv[("q13", "n_b")])
+    fa, fb = int(gv[("q13", "flowered_a")]), int(gv[("q13", "flowered_b")])
+    tot = fa + fb
+    ks = [int(r["flowered_a"]) for r in rows("practice/practice-flowering-sim.csv")]
+    diffs = [k / na - (tot - k) / nb for k in ks]
+    observed = fa / na - fb / nb
+    grid = list(range(min(ks), max(ks) + 1))
+    fig, ax = new(2.9)
+    ax.axvline(observed, color=MID, linestyle="--", linewidth=0.8, zorder=0)
+    top = stack(ax, [round(x, 6) for x in diffs], size=2.6)
+    ax.text(observed + 0.006, top * 0.92, f"Observed\ndifference, {f(observed, 2)}", va="top", ha="left")
+    ax.set_yticks([])
+    ax.spines["left"].set_visible(False)
+    ax.set_ylim(0, top + 2)
+    ax.set_xlim(-0.33, 0.33)
+    ticks = [round(-0.3 + 0.1 * i, 1) for i in range(7)]
+    ax.set_xticks(ticks, [f(t, 2).replace("-", "\u2212") for t in ticks])
+    ax.set_xlabel("Difference in shares that flowered, A minus B, in each of 200 reruns (one dot each)")
+    return fig, {"pt.fig24.reruns": str(len(ks)), "pt.fig24.ge": str(sum(x >= observed - 1e-9 for x in diffs)),
+                 "pt.fig24.diffs": j(f(k / na - (tot - k) / nb, 2) for k in grid),
+                 "pt.fig24.counts": j(ks.count(k) for k in grid)}
+
+
+def fig25(d):
+    gv = givens()
+    groups = (("under40", "Under 40"), ("over40", "40 and over"))
+    srcs = (("phone", "Phone", PALE), ("tv", "TV", MID), ("print", "Print", DARK))
+    fig, ax = new(2.4)
+    facts = {}
+    for i, (key, lab) in enumerate(groups):
+        c = [int(gv[("q26", f"{key}_{s}")]) for s, _, _ in srcs]
+        pct = [100 * x / sum(c) for x in c]
+        facts[f"pt.fig25.{key}.pct"] = j(f(p, 1) for p in pct)
+        bottom = 0
+        for (s, name, shade), p in zip(srcs, pct):
+            ax.bar(i, p, bottom=bottom, width=0.55, color=shade, edgecolor=INK, linewidth=0.5,
+                   label=name if i == 0 else None)
+            ax.text(i, bottom + p / 2, f"{f(p, 1)}%", ha="center", va="center",
+                    color=("white" if shade == DARK else INK))
+            bottom += p
+    ax.set_xticks([0, 1], [lab for _, lab in groups])
+    ax.set_xlim(-0.6, 2.2)
+    ax.set_ylim(0, 100)
+    ax.set_ylabel("Percent of the age group")
+    handles, labels = ax.get_legend_handles_labels()
+    ax.legend(handles[::-1], labels[::-1], frameon=False, loc="center right", title="Main news source")
+    return fig, facts
+
+
+def fig26(d):
+    v = [float(r["minutes"]) for r in rows("practice/practice-checkout.csv")]
+    fig, ax = new(1.3)
+    stack(ax, v, size=5, hollow=True)
+    ax.set_ylim(0.3, 2.2)
+    ax.set_yticks([])
+    ax.spines["left"].set_visible(False)
+    ax.set_xlim(0, 16)
+    ax.set_xticks(range(0, 17, 1))
+    ax.set_xlabel("Minutes at the checkout, one circle for each of the 12 customers")
+    return fig, {"pt.fig26.values": j(g(x) for x in sorted(v))}
+
+
+def fig27(d):
+    ic = rows("practice/practice-iced.csv")
+    x = np.array([float(r["high_f"]) for r in ic])
+    y = np.array([float(r["drinks"]) for r in ic])
+    a, b, _ = fit(x, y)
+    fig, ax = new(2.8)
+    ax.plot(x, y, "o", markerfacecolor="none", markeredgecolor=INK, markersize=4, markeredgewidth=0.7)
+    xs = np.array([58.0, 97.0])
+    ax.plot(xs, a + b * xs, color=INK, linewidth=1.0)
+    ax.set_xlim(57, 98)
+    ax.set_xlabel("The day's high (degrees Fahrenheit)")
+    ax.set_ylabel("Iced drinks sold")
+    return fig, {"pt.fig27.n": str(len(x)), "pt.fig27.line": j([f(a, 3), f(b, 3)]),
+                 "pt.fig27.x_range": j([g(float(x.min())), g(float(x.max()))])}
+
+
+def fig28(d):
+    sp = rows("practice/practice-stopping.csv")
+    x = np.array([float(r["speed_mph"]) for r in sp])
+    y = np.array([float(r["distance_ft"]) for r in sp])
+    _, _, res = fit(x, y)
+    fig, ax = new(2.2)
+    ax.plot(x, res, "o", color=INK, markersize=4)
+    ax.axhline(0, color=INK, linewidth=0.7)
+    ax.set_xticks(range(20, 80, 5))
+    ax.set_xlabel("Speed (miles per hour)")
+    ax.set_ylabel("Residual (feet)")
+    return fig, {"pt.fig28.speeds": j(g(float(v)) for v in x), "pt.fig28.res": j(f(float(e), 1) for e in res)}
+
+
+def fig29(d):
+    cm = rows("practice/practice-commute.csv")
+    fig, axes = plt.subplots(2, 1, figsize=(WIDTH, 2.6), layout="constrained", sharex=True)
+    facts = {}
+    for ax, mode, lab in ((axes[0], "bike", "Bike"), (axes[1], "bus", "Bus")):
+        v = [float(r["minutes"]) for r in cm if r["mode"] == mode]
+        top = stack(ax, v, size=4)
+        ax.set_ylim(0.3, max(top, 5) + 0.7)
+        ax.set_yticks([])
+        ax.spines["left"].set_visible(False)
+        ax.set_ylabel(lab, rotation=0, ha="right", va="center")
+        facts[f"pt.fig29.{mode}"] = j(g(x) for x in sorted(v))
+    axes[1].set_xlim(5, 50)
+    axes[1].set_xticks(range(5, 51, 5))
+    axes[1].set_xlabel("One-way commute (minutes), one dot for each student")
+    return fig, facts
+
+
 FIGURES = [fig01, fig02, fig03, fig04, fig05, fig06, fig07, fig08, fig09, fig10, fig11, fig12, fig13, fig14,
-           fig15, fig16, fig17, fig18, fig19, fig20, fig21]
+           fig15, fig16, fig17, fig18, fig19, fig20, fig21, fig22, fig23, fig24, fig25, fig26, fig27, fig28, fig29]
 
 
 def main():
