@@ -142,7 +142,7 @@ the evidence is suggestive but not convincing at the 5% level. Traps: (A) the re
 (`pt.q13.trap.complement`); (C) 12 read as 12 of 100 (`pt.q13.trap.per100`); (D) the observed
 difference itself.
 
-**14 (5.5 to 5.8).** For a student chosen at random, A is "plays a sport" and B is "plays an
+**14 (5.6 to 5.8).** For a student chosen at random, A is "plays a sport" and B is "plays an
 instrument", with P(A) = 0.40, P(B) = 0.25, and P(A ∩ B) = 0.10 (`pt.q14.*`). Which is true?
 (A) P(A ∪ B) = 0.65; (B) A and B are mutually exclusive; **(C) A and B are independent**;
 (D) P(A | B) = 0.25. Values: 0.40 × 0.25 = 0.10 (`pt.q14.product`); P(A ∪ B) = 0.55
@@ -157,7 +157,7 @@ probability it was delivered? **(A) 0.632**; (B) 0.080; (C) 0.038; (D) 0.024. Va
 0.038 (`pt.q15.p_late`); 0.024 ÷ 0.038 = 0.632 (`pt.q15.delivery_given_late`). Traps: (B) the
 reverse condition; (C) P(late); (D) P(delivered and late).
 
-**16 (6.1, 6.2).** X, the goals a team scores in a game, has P(0) = 0.1, P(1) = 0.3, P(2) = 0.4,
+**16 (6.2).** X, the goals a team scores in a game, has P(0) = 0.1, P(1) = 0.3, P(2) = 0.4,
 and P(3) = 0.2 (`pt.q16.x`, `.p`). Its mean and standard deviation? (A) μ = 1.5, σ = 1.12;
 (B) μ = 1.7, σ = 0.81; (C) μ = 1.5, σ = 0.90; **(D) μ = 1.7, σ = 0.90**. Values
 `pt.q16.mu`, `pt.q16.sigma` (variance 0.81, `pt.q16.var`). Traps: (A) and (C) average the four

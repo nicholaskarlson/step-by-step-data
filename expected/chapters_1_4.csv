@@ -95,8 +95,10 @@ ch3.L4.eight_plus,37
 ch3.L4.fences,"-4.5, 7.5"
 ch3.L4.five,"0, 0, 1, 3, 16"
 ch3.L4.mean,2.193
+ch3.L4.mean4,2.1934
 ch3.L4.outliers,37
 ch3.L4.sx,2.731
+ch3.L4.sx4,2.7313
 ch3.L4.two_sd,7.66
 ch3.L4.two_sd.count,37
 ch3.L4.zero,199
@@ -121,6 +123,7 @@ ch3.entry.iqr,0.67
 ch3.entry.mean,3.010
 ch3.entry.med,3.00
 ch3.entry.sx,0.469
+ch3.entry.sx4,0.4691
 ch3.gap,0.314
 ch3.hist2.after18,1
 ch3.hist2.bars,"317, 141, 61, 41, 26, 10, 7, 3, 2"
@@ -138,6 +141,10 @@ ch3.review.scale.mean,77.2
 ch3.review.scale.sd,10.4
 ch3.review.z.first,1.33
 ch3.review.z.second,1.75
+ch3.units.L1.mean,3.024187
+ch3.units.L1.sx,0.474817
+ch3.units.L1x25.mean,75.6047
+ch3.units.L1x25.sx,11.8704
 ch3.units.minus025.iqr,0.67
 ch3.units.minus025.mean,2.760
 ch3.units.minus025.med,2.75
@@ -196,7 +203,7 @@ ch4.systematic.k,40
 ch4.systematic.sizes,30 or 31
 ch4.try40.part_time_exact,14.7
 ch4.try40.split,15 and 25
-ch4.visits.full_time.mean,2.62
+ch4.visits.full_time.mean,2.63
 ch4.visits.part_time.mean,1.89
 ch4.visits.stayed_or_transferred.mean,2.51
 ch4.visits.withdrew.mean,1.43

@@ -22,3 +22,13 @@ checks then require every printed number to match.
 - D5: the practice test for overlay C6b, 40 multiple-choice and 4 written questions in new,
   invented settings, with every choice, trap, and model-answer value, and Figures 22 to 29:
   `practice-test.md` (391 values in `expected/practice.csv`, from the data in `../practice/`).
+- D5c: values for overlay C6d, after two outside audits of the book. A TI-84 Plus CE list holds at
+  most 999 values, so the calculator steps of Sections 3.4, 6.2, and 7.2 no longer join the two
+  groups' lists into one of 1,219: L1's grades and 25L1 (`ch3.units.L1*`), and L2's SD of means of
+  30 (`ch7.L2.sd30`). Two figures worked by hand from printed values were halfway values (25 × 0.469
+  and 2.193 + 2 × 2.731), so their inputs print to four places (`ch3.entry.sx4`, `ch3.L4.mean4`,
+  `ch3.L4.sx4`), and each route checks that they give the calculator's digits. Section 4.2's visit
+  means by part-time study are now among the 1,208 whose outcome is known, as the shares beside
+  them are (`ch4.visits.*_time.mean`: full-time 2.63, not 2.62). The practice test's plan maps
+  Questions 14 and 16 to the sections the book names (5.6 to 5.8, and 6.2). `chapters_1_4.csv` has
+  238 values and `chapters_5_8.csv` 235.
