@@ -252,6 +252,13 @@ def chapter_7(every):
     s = float(f(math.sqrt(m2), 3))                   # the printed 2.926
     put("ch7.sd30", f(s / math.sqrt(30), 3)); put("ch7.sd120", f(s / math.sqrt(120), 3))
     put("ch7.skew.pop", f(skew, 2)); put("ch7.skew.mean30", f(skew / math.sqrt(30), 2))
+    # D5c: the calculator's simulation draws from L2 (609 visits), since a list holds at most 999
+    # values; its sigma-x, 3.102 as printed in Section 3.3, over the square root of 30
+    L2 = [int(r["visits"]) for r in every if r["offer"] == "1"]
+    s2 = float(f(pop_sd(L2), 3))
+    put("ch7.L2.sd30", f(s2 / math.sqrt(30), 3))
+    if f(pop_sd(L2) / math.sqrt(30), 3) != V["ch7.L2.sd30"]:
+        raise SystemExit("ch7.L2.sd30 differs when worked from the unrounded sigma-x")
     put("ch7.ten_pct.joiners", f(N / 10, 1))
     k_off = [r for r in known if r["offer"] == "1"]; k_not = [r for r in known if r["offer"] == "0"]
     gap = float(f(sum(r["withdrew"] == "1" for r in k_off) / len(k_off) - sum(r["withdrew"] == "1" for r in k_not) / len(k_not), 4))

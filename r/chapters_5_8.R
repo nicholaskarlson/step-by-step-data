@@ -178,6 +178,11 @@ skew <- m3 / m2^1.5
 s <- rnd(sqrt(m2), 3)
 put("ch7.sd30", fx(s / sqrt(30), 3)); put("ch7.sd120", fx(s / sqrt(120), 3))
 put("ch7.skew.pop", fx(skew, 2)); put("ch7.skew.mean30", fx(skew / sqrt(30), 2))
+# D5c: the calculator's simulation draws from L2 (609 visits), since a list holds at most 999
+# values; its sigma-x, 3.102 as printed in Section 3.3, over the square root of 30
+s2 <- rnd(psd(v2), 3)
+put("ch7.L2.sd30", fx(s2 / sqrt(30), 3))
+if (fx(psd(v2) / sqrt(30), 3) != vals[["ch7.L2.sd30"]]) stop("ch7.L2.sd30 differs when worked from the unrounded sigma-x")
 put("ch7.ten_pct.joiners", fx(N / 10, 1))
 gap <- rnd(sum(koff$withdrew == "1") / nrow(koff) - sum(knot$withdrew == "1") / nrow(knot), 4)
 sdg <- rnd(sqrt(p * (1 - p) * (1 / nrow(koff) + 1 / nrow(knot))), 4)

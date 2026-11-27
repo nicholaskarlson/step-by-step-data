@@ -137,6 +137,19 @@ e <- calc(eg)
 put("ch3.entry.mean", fx(e$mean, 3)); put("ch3.entry.sx", fx(e$sx, 3))
 t25 <- calc(25 * eg)
 put("ch3.units.times25.mean", fx(t25$mean, 2)); put("ch3.units.times25.sx", fx(t25$sx, 2))
+# D5c: 25 x 0.469 is 11.725, a halfway value, so the book works 25 x Sx from Sx to four places
+put("ch3.entry.sx4", fx(e$sx, 4))
+if (fx(25 * as.numeric(vals[["ch3.entry.sx4"]]), 2) != vals[["ch3.units.times25.sx"]])
+  stop("25 x ch3.entry.sx4 does not give ch3.units.times25.sx")
+# D5c: a list holds at most 999 values, so the calculator shows the rule on L1 alone (609 grades)
+L1 <- as.numeric(every$entry_grade[every$offer == "1"])
+l1 <- calc(L1); h1 <- calc(25 * L1)
+put("ch3.units.L1.mean", fx(l1$mean, 6)); put("ch3.units.L1.sx", fx(l1$sx, 6))
+put("ch3.units.L1x25.mean", fx(h1$mean, 4)); put("ch3.units.L1x25.sx", fx(h1$sx, 4))
+for (k in c("mean", "sx")) {
+  if (fx(25 * as.numeric(vals[[paste0("ch3.units.L1.", k)]]), 4) != vals[[paste0("ch3.units.L1x25.", k)]])
+    stop(paste0("25 x ch3.units.L1.", k, " does not give ch3.units.L1x25.", k))
+}
 m25 <- calc(eg - 0.25)
 put("ch3.units.minus025.mean", fx(m25$mean, 3)); put("ch3.units.minus025.med", fx(m25$med, 2))
 put("ch3.units.minus025.sx", fx(m25$sx, 3)); put("ch3.units.minus025.iqr", fx(m25$q3 - m25$q1, 2))
@@ -173,6 +186,10 @@ put("ch3.L4.fences", paste(gx(s4$q1 - 1.5 * i4), gx(s4$q3 + 1.5 * i4), sep = ", 
 put("ch3.L4.outliers", sum(L4 > s4$q3 + 1.5 * i4))
 two4 <- s4$mean + 2 * s4$sx
 put("ch3.L4.two_sd", fx(two4, 2)); put("ch3.L4.two_sd.count", sum(L4 > two4))
+# D5c: 2.193 + 2 x 2.731 is 7.655, a halfway value, so the Try It works it from four places
+put("ch3.L4.mean4", fx(s4$mean, 4)); put("ch3.L4.sx4", fx(s4$sx, 4))
+if (fx(as.numeric(vals[["ch3.L4.mean4"]]) + 2 * as.numeric(vals[["ch3.L4.sx4"]]), 2) != vals[["ch3.L4.two_sd"]])
+  stop("ch3.L4.mean4 + 2 x ch3.L4.sx4 does not give ch3.L4.two_sd")
 put("ch3.L2.eight_plus", sum(L2 >= 8)); put("ch3.L4.eight_plus", sum(L4 >= 8))
 for (z in c("1", "0")) {
   lab <- if (z == "1") "offered" else "not_offered"
@@ -201,7 +218,8 @@ for (z in c("1", "0")) {
 }
 for (z in c("1", "0")) {
   lab <- if (z == "1") "part_time" else "full_time"
-  put(paste0("ch4.visits.", lab, ".mean"), fx(mean(as.numeric(every$visits[every$part_time == z])), 2))
+  # D5c: among the known, as the withdrawal shares beside them are (2.63, not 2.62 on all 1,219)
+  put(paste0("ch4.visits.", lab, ".mean"), fx(mean(as.numeric(known$visits[known$part_time == z])), 2))
   k <- known[known$part_time == z, ]
   ww <- sum(k$withdrew == "1")
   put(paste0("ch4.", lab, ".withdrew"), ww); put(paste0("ch4.", lab, ".known"), nrow(k))

@@ -208,6 +208,18 @@ def chapter_3(every):
     put("ch3.entry.mean", f(e["mean"], 3)); put("ch3.entry.sx", f(e["sx"], 3))
     t25 = ti([25 * x for x in eg])
     put("ch3.units.times25.mean", f(t25["mean"], 2)); put("ch3.units.times25.sx", f(t25["sx"], 2))
+    # D5c: 25 x 0.469 is 11.725, a halfway value, so the book works 25 x Sx from Sx to four places
+    put("ch3.entry.sx4", f(e["sx"], 4))
+    if f(25 * float(V["ch3.entry.sx4"]), 2) != V["ch3.units.times25.sx"]:
+        raise SystemExit("25 x ch3.entry.sx4 does not give ch3.units.times25.sx")
+    # D5c: a list holds at most 999 values, so the calculator shows the rule on L1 alone (609 grades)
+    L1 = [float(r["entry_grade"]) for r in every if r["offer"] == "1"]
+    l1, h = ti(L1), ti([25 * x for x in L1])
+    put("ch3.units.L1.mean", f(l1["mean"], 6)); put("ch3.units.L1.sx", f(l1["sx"], 6))
+    put("ch3.units.L1x25.mean", f(h["mean"], 4)); put("ch3.units.L1x25.sx", f(h["sx"], 4))
+    for k in ("mean", "sx"):
+        if f(25 * float(V[f"ch3.units.L1.{k}"]), 4) != V[f"ch3.units.L1x25.{k}"]:
+            raise SystemExit(f"25 x ch3.units.L1.{k} does not give ch3.units.L1x25.{k}")
     m25 = ti([x - 0.25 for x in eg])
     put("ch3.units.minus025.mean", f(m25["mean"], 3)); put("ch3.units.minus025.med", f(m25["med"], 2))
     put("ch3.units.minus025.sx", f(m25["sx"], 3)); put("ch3.units.minus025.iqr", f(m25["q3"] - m25["q1"], 2))
@@ -251,6 +263,10 @@ def chapter_3(every):
     put("ch3.L4.outliers", str(sum(x > s4["q3"] + 1.5 * i4 for x in L4)))
     two4 = s4["mean"] + 2 * s4["sx"]
     put("ch3.L4.two_sd", f(two4, 2)); put("ch3.L4.two_sd.count", str(sum(x > two4 for x in L4)))
+    # D5c: 2.193 + 2 x 2.731 is 7.655, a halfway value, so the Try It works it from four places
+    put("ch3.L4.mean4", f(s4["mean"], 4)); put("ch3.L4.sx4", f(s4["sx"], 4))
+    if f(float(V["ch3.L4.mean4"]) + 2 * float(V["ch3.L4.sx4"]), 2) != V["ch3.L4.two_sd"]:
+        raise SystemExit("ch3.L4.mean4 + 2 x ch3.L4.sx4 does not give ch3.L4.two_sd")
     put("ch3.L2.eight_plus", str(sum(x >= 8 for x in L2))); put("ch3.L4.eight_plus", str(sum(x >= 8 for x in L4)))
     # back-to-back stemplot: withdrawal percent by college, among known outcomes
     for z, lab in (("1", "offered"), ("0", "not_offered")):
@@ -286,7 +302,8 @@ def chapter_4(every, invited):
         v = [float(r["visits"]) for r in known if r["withdrew"] == z]
         put(f"ch4.visits.{lab}.mean", f(math.fsum(v) / len(v), 2))
     for z, lab in (("1", "part_time"), ("0", "full_time")):
-        v = [float(r["visits"]) for r in every if r["part_time"] == z]
+        # D5c: among the known, as the withdrawal shares beside them are (2.63, not 2.62 on all 1,219)
+        v = [float(r["visits"]) for r in known if r["part_time"] == z]
         put(f"ch4.visits.{lab}.mean", f(math.fsum(v) / len(v), 2))
         k = [r for r in known if r["part_time"] == z]
         w = sum(r["withdrew"] == "1" for r in k)
